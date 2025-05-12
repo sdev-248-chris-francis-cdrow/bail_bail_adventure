@@ -1,0 +1,111 @@
+[gd_scene load_steps=14 format=4 uid="uid://dgb5tiejajlav"]
+
+[ext_resource type="Texture2D" uid="uid://cp3myhc3jv7m" path="res://assets/backgrounds/lv3/forest.png" id="1_l6bhs"]
+[ext_resource type="Script" uid="uid://bibw6vbmh6i4g" path="res://scenes/levels/lv_3.gd" id="1_wp5ey"]
+[ext_resource type="Texture2D" uid="uid://dl0kjes6pnh1t" path="res://assets/tiles/tileset.png" id="2_wp5ey"]
+[ext_resource type="PackedScene" uid="uid://2q1aa6ylpd8t" path="res://scenes/chars/bailey/bailey.tscn" id="3_jm5tb"]
+[ext_resource type="PackedScene" uid="uid://c1jcouem4g07w" path="res://scenes/hud/gui.tscn" id="4_kb8ti"]
+[ext_resource type="PackedScene" uid="uid://cf80eopg2mq4b" path="res://scenes/chars/black_squirrel/black_squirrel.tscn" id="6_jm5tb"]
+[ext_resource type="PackedScene" uid="uid://bfevl6hbjokfv" path="res://scenes/chars/squirrel_king/chippy.tscn" id="7_kb8ti"]
+[ext_resource type="Texture2D" uid="uid://24hgtdhvrwrl" path="res://assets/hud/dialog.png" id="8_54fhr"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_54fhr"]
+texture = ExtResource("2_wp5ey")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 4, 64, 3, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 4, 64, 3, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 4, 64, 3, 64, 64, -64, 64)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 4, 64, 3, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_38kew"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_54fhr")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kycry"]
+texture = ExtResource("2_wp5ey")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_su46b"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/1 = SubResource("TileSetAtlasSource_kycry")
+
+[sub_resource type="LabelSettings" id="LabelSettings_38kew"]
+font_size = 150
+font_color = Color(0, 0, 0, 1)
+
+[node name="Lv3" type="Node2D"]
+script = ExtResource("1_wp5ey")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_l6bhs")
+centered = false
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAAAAAUAAQAAAAAAAAABAAUAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_38kew")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wMAAQABAAAAAAD//wQAAQABAAAAAAD//wIAAQABAAAAAAD//wEAAQABAAAAAAD//wAAAQABAAAAAAD/////AQABAAAAAAAAAP//AQABAAAAAAABAP//AQABAAAAAAACAP//AQABAAAAAAADAP//AQABAAAAAAAEAP//AQABAAAAAAAFAP//AQABAAAAAAAGAP//AQABAAAAAAAHAP//AQABAAAAAAAIAP//AQABAAAAAAAJAP//AQABAAAAAAAJAAAAAQABAAAAAAAJAAEAAQABAAAAAAAJAAIAAQABAAAAAAAJAAMAAQABAAAAAAAJAAQAAQABAAAAAAD//wUAAQABAAAAAAAAAAUAAQABAAAAAAABAAUAAQABAAAAAAACAAUAAQABAAAAAAADAAUAAQABAAAAAAAEAAUAAQABAAAAAAAFAAUAAQABAAAAAAAGAAUAAQABAAAAAAAHAAUAAQABAAAAAAAIAAUAAQABAAAAAAAJAAUAAQABAAAAAAA=")
+tile_set = SubResource("TileSet_su46b")
+
+[node name="bailey" parent="." groups=["player"] instance=ExtResource("3_jm5tb")]
+position = Vector2(131, 438)
+collision_mask = 3
+
+[node name="Gui" parent="." instance=ExtResource("4_kb8ti")]
+
+[node name="BlackSquirrel" parent="." groups=["enemies"] instance=ExtResource("6_jm5tb")]
+position = Vector2(477, 519)
+
+[node name="BlackSquirrel2" parent="." groups=["enemies"] instance=ExtResource("6_jm5tb")]
+position = Vector2(630, 520)
+
+[node name="BlackSquirrel3" parent="." groups=["enemies"] instance=ExtResource("6_jm5tb")]
+position = Vector2(778, 519)
+is_summoner = true
+
+[node name="Chippy" parent="." groups=["enemies"] instance=ExtResource("7_kb8ti")]
+visible = false
+position = Vector2(1108, 529)
+has_ball = true
+
+[node name="Dialog" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(859, 217)
+scale = Vector2(0.267593, 0.267593)
+texture = ExtResource("8_54fhr")
+
+[node name="Label" type="Label" parent="Dialog"]
+anchors_preset = -1
+anchor_left = 0.048
+anchor_top = 0.046
+anchor_right = 0.835
+anchor_bottom = 0.781
+offset_left = -959.16
+offset_top = -539.68
+offset_right = -960.2
+offset_bottom = -540.48
+text = "GRRUUH
+!!!HOW DARE YOU DISTURB MY SLUMBER!!!"
+label_settings = SubResource("LabelSettings_38kew")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[connection signal="awaken_the_king" from="BlackSquirrel3" to="." method="_on_black_squirrel_3_awaken_the_king"]
+
+[editable path="Chippy"]

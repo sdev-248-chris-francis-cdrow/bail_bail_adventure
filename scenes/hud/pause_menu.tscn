@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2btish0xry2m"]
+
+[ext_resource type="Script" uid="uid://dvyvl301pnujj" path="res://scenes/hud/pause_menu.gd" id="1_03n7f"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_03n7f")
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+process_mode = 3

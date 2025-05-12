@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfevl6hbjokfv"]
+
+[ext_resource type="Script" uid="uid://cvvultbw7bgaw" path="res://scenes/chars/squirrel_king/chippy.gd" id="1_8i6rw"]
+[ext_resource type="Texture2D" uid="uid://efgo2jjbu1w7" path="res://assets/chars/squirrel_king/chippy_the_first.png" id="2_8i6rw"]
+[ext_resource type="AudioStream" uid="uid://btrfgbku3b2rc" path="res://assets/chars/gray_squirrel/hurt.wav" id="3_m8ut0"]
+[ext_resource type="PackedScene" uid="uid://cnaw4xrujfib0" path="res://scenes/items/ball.tscn" id="4_moipt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewhgx"]
+size = Vector2(78, 209)
+
+[node name="Chippy" type="CharacterBody2D"]
+script = ExtResource("1_8i6rw")
+
+[node name="Chippy" type="Sprite2D" parent="."]
+texture = ExtResource("2_8i6rw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
+position = Vector2(2, -56.5)
+shape = SubResource("RectangleShape2D_ewhgx")
+disabled = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_m8ut0")
+
+[node name="RightRay" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
+collision_mask = 2
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+target_position = Vector2(-100, 0)
+collision_mask = 2
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Ball" parent="." instance=ExtResource("4_moipt")]
+visible = false
+position = Vector2(0, 20)
+monitoring = false
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cveea6fjtmh51"]
+
+[ext_resource type="Texture2D" uid="uid://cief1fdjij6k6" path="res://assets/chars/terry_the_technician/toolbox.png" id="1_ldjb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldjb1"]
+size = Vector2(125, 74)
+
+[node name="Toolbox" type="StaticBody2D"]
+
+[node name="Toolbox" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ldjb1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-8.5, 11)
+shape = SubResource("RectangleShape2D_ldjb1")

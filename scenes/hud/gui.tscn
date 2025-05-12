@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1jcouem4g07w"]
+
+[ext_resource type="Script" uid="uid://idhdohuprgig" path="res://scenes/hud/gui.gd" id="1_181ra"]
+[ext_resource type="Texture2D" uid="uid://e2yafnarr7b7" path="res://assets/hud/heart_full.png" id="1_mkh6d"]
+[ext_resource type="Texture2D" uid="uid://8mrh81tt6jsr" path="res://assets/hud/heart_empty.png" id="2_181ra"]
+[ext_resource type="Texture2D" uid="uid://c3tosb0tf3gmn" path="res://assets/items/tennisball.png" id="4_7dh3a"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_181ra"]
+font_size = 60
+font_color = Color(0, 0, 0, 1)
+
+[node name="Gui" type="CanvasLayer"]
+script = ExtResource("1_181ra")
+
+[node name="HeartFull" type="Sprite2D" parent="."]
+position = Vector2(40, 40)
+texture = ExtResource("1_mkh6d")
+
+[node name="HeartFull2" type="Sprite2D" parent="."]
+position = Vector2(110, 40)
+texture = ExtResource("1_mkh6d")
+
+[node name="HeartFull3" type="Sprite2D" parent="."]
+position = Vector2(180, 40)
+texture = ExtResource("1_mkh6d")
+
+[node name="HeartEmpty" type="Sprite2D" parent="."]
+position = Vector2(40, 40)
+texture = ExtResource("2_181ra")
+
+[node name="HeartEmpty2" type="Sprite2D" parent="."]
+position = Vector2(110, 40)
+texture = ExtResource("2_181ra")
+
+[node name="HeartEmpty3" type="Sprite2D" parent="."]
+position = Vector2(180, 40)
+texture = ExtResource("2_181ra")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.123
+offset_left = 4.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = 6.296
+text = "0000"
+label_settings = SubResource("LabelSettings_181ra")
+horizontal_alignment = 2
+
+[node name="Ball" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(40, 100)
+texture = ExtResource("4_7dh3a")
+
+[node name="Ball2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(110, 100)
+texture = ExtResource("4_7dh3a")
+
+[node name="Ball3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(180, 100)
+texture = ExtResource("4_7dh3a")

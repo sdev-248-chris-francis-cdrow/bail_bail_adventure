@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=4 uid="uid://cf16s5awl8twh"]
+
+[ext_resource type="Script" uid="uid://chiqnblt7f4it" path="res://scenes/levels/lv_2.gd" id="1_i57l0"]
+[ext_resource type="Texture2D" uid="uid://cqxksloa1tav3" path="res://assets/backgrounds/lv2/backyard.png" id="1_l8hhi"]
+[ext_resource type="Texture2D" uid="uid://dl0kjes6pnh1t" path="res://assets/tiles/tileset.png" id="2_l8hhi"]
+[ext_resource type="PackedScene" uid="uid://2q1aa6ylpd8t" path="res://scenes/chars/bailey/bailey.tscn" id="3_lgdgv"]
+[ext_resource type="PackedScene" uid="uid://c1jcouem4g07w" path="res://scenes/hud/gui.tscn" id="4_i57l0"]
+[ext_resource type="PackedScene" uid="uid://wmu7jhe5j2qs" path="res://scenes/items/apple.tscn" id="5_l8hhi"]
+[ext_resource type="PackedScene" uid="uid://7qw3me2ixf6u" path="res://scenes/chars/gray_squirrel/gray_squirrel.tscn" id="8_f0ulf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0ulf"]
+texture = ExtResource("2_l8hhi")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 1, 64, 4, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 1, 64, 4, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 1, 64, 4, 64, 64, -64, 64)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, 1, 64, 4, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_840sv"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_f0ulf")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5lalk"]
+texture = ExtResource("2_l8hhi")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gkw8m"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/1 = SubResource("TileSetAtlasSource_5lalk")
+
+[node name="lv2" type="Node2D"]
+script = ExtResource("1_i57l0")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_l8hhi")
+centered = false
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAQAAQACAAAAAAABAAQAAQACAAAAAAACAAQAAQACAAAAAAADAAQAAQACAAAAAAAEAAQAAQACAAAAAAAFAAQAAQACAAAAAAAGAAQAAQACAAAAAAAHAAQAAQACAAAAAAAIAAQAAQACAAAAAAD//wUAAQACAAAAAAAAAAUAAQACAAAAAAABAAUAAQACAAAAAAACAAUAAQACAAAAAAADAAUAAQACAAAAAAAEAAUAAQACAAAAAAAFAAUAAQACAAAAAAAGAAUAAQACAAAAAAAHAAUAAQACAAAAAAAIAAUAAQACAAAAAAAJAAUAAQACAAAAAAA=")
+tile_set = SubResource("TileSet_840sv")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//wMAAQACAAAAAAD//wQAAQACAAAAAAD//wIAAQACAAAAAAD//wEAAQACAAAAAAD//wAAAQACAAAAAAD/////AQACAAAAAAAAAP//AQACAAAAAAABAP//AQACAAAAAAACAP//AQACAAAAAAADAP//AQACAAAAAAAEAP//AQACAAAAAAAFAP//AQACAAAAAAAGAP//AQACAAAAAAAHAP//AQACAAAAAAAIAP//AQACAAAAAAAJAP//AQACAAAAAAAJAAAAAQACAAAAAAAJAAEAAQACAAAAAAAJAAIAAQACAAAAAAAJAAMAAQACAAAAAAAJAAQAAQACAAAAAAA=")
+tile_set = SubResource("TileSet_gkw8m")
+
+[node name="bailey" parent="." groups=["player"] instance=ExtResource("3_lgdgv")]
+position = Vector2(131, 438)
+collision_mask = 3
+
+[node name="Gui" parent="." instance=ExtResource("4_i57l0")]
+
+[node name="Apple" parent="." instance=ExtResource("5_l8hhi")]
+position = Vector2(334, 527)
+
+[node name="GraySquirrel" parent="." groups=["enemies"] instance=ExtResource("8_f0ulf")]
+position = Vector2(666, 507)
+
+[node name="GraySquirrel2" parent="." groups=["enemies"] instance=ExtResource("8_f0ulf")]
+position = Vector2(838, 507)
+has_ball = true

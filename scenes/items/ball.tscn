@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnaw4xrujfib0"]
+
+[ext_resource type="Script" uid="uid://q2k32s38u83l" path="res://scenes/items/ball.gd" id="1_5gy2m"]
+[ext_resource type="Texture2D" uid="uid://c3tosb0tf3gmn" path="res://assets/items/tennisball.png" id="1_ks4aq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5gy2m"]
+size = Vector2(54, 54)
+
+[node name="Ball" type="Area2D"]
+script = ExtResource("1_5gy2m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ks4aq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_5gy2m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

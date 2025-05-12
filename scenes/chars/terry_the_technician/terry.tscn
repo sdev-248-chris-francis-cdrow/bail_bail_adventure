@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://6swwx5vvtpy3"]
+
+[ext_resource type="Script" uid="uid://dk5tgdawtjmk4" path="res://scenes/chars/terry_the_technician/terry.gd" id="1_nidqd"]
+[ext_resource type="Texture2D" uid="uid://cyh3cjavrfw51" path="res://assets/chars/terry_the_technician/terry.png" id="1_qsbgg"]
+[ext_resource type="PackedScene" uid="uid://cveea6fjtmh51" path="res://scenes/chars/terry_the_technician/toolbox.tscn" id="3_fhaid"]
+[ext_resource type="AudioStream" uid="uid://xpv4gyhud8rb" path="res://assets/chars/terry_the_technician/hurt.wav" id="4_rsk1f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsbgg"]
+size = Vector2(120, 361)
+
+[node name="Terry" type="CharacterBody2D"]
+script = ExtResource("1_nidqd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_qsbgg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemies"]]
+position = Vector2(0, 19.5)
+shape = SubResource("RectangleShape2D_qsbgg")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Toolbox" parent="." instance=ExtResource("3_fhaid")]
+position = Vector2(242, 154)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_rsk1f")
+bus = &"Sound Effects"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Toolbox"]

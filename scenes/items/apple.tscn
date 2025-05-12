@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://wmu7jhe5j2qs"]
+
+[ext_resource type="Texture2D" uid="uid://dsgsstca2h0bx" path="res://assets/items/apple.png" id="1_k3jgi"]
+[ext_resource type="Script" uid="uid://dls2mnx7yfjs3" path="res://scenes/items/apple.gd" id="1_v00l4"]
+[ext_resource type="AudioStream" uid="uid://bfkjo7f81eutr" path="res://assets/items/apple.mp3" id="3_0dpyl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v00l4"]
+size = Vector2(50, 44)
+
+[node name="Apple" type="Area2D"]
+script = ExtResource("1_v00l4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_k3jgi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_v00l4")
+
+[node name="EatApple" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0dpyl")
+volume_db = 1.0
+bus = &"Sound Effects"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="EatApple" to="." method="_on_eat_apple_finished"]
